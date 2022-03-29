@@ -21,7 +21,7 @@ class Queue {
 
   enqueue(val) {
     const newNode = new Node(val);
-    if (this.size === 0) {
+    if (this.isEmpty()) {
       this.first = newNode;
       this.last = newNode;
     } else {
@@ -35,17 +35,17 @@ class Queue {
    * and return its value. Should throw an error if the queue is empty. */
 
   dequeue() {
-    if (this.size === 0) throw new Error("Can't remove a node from an empty list.")
-    const result = this.first.val;
-    this.first = this.first.next;
+    if (this.isEmpty()) throw new Error("Can't remove a node from an empty list.")
+    const value = this.peek();
+    this.first = this.first.next ? this.first.next : null;
     this.size --;
-    return result;
+    return value;
   }
 
   /** peek(): return the value of the first node in the queue. */
 
   peek() {
-    if (this.size === 0) return 'Nothing in queue.';
+    if (this.isEmpty()) return 'Nothing in queue.';
     return this.first.val;
   }
 

@@ -21,7 +21,7 @@ class Stack {
 
   push(val) {
     const newNode = new Node(val);
-    if (this.size === 0) {
+    if (this.isEmpty()) {
       this.first = newNode;
       this.last = newNode;
       this.size ++;
@@ -36,8 +36,8 @@ class Stack {
    * and return its value. Should throw an error if the stack is empty. */
 
   pop() {
-    if (this.size === 0) throw new Error("Can't pop() from empty stack.");
-    const result = this.first.val;
+    if (this.isEmpty()) throw new Error("Can't pop() from empty stack.");
+    const result = this.peek();
     this.first = this.first.next;
     this.size --;
     return result;
@@ -46,7 +46,7 @@ class Stack {
   /** peek(): return the value of the first node in the stack. */
 
   peek() {
-    if (this.size === 0) throw new Error("Can't peek() empty stack.");
+    if (this.isEmpty()) throw new Error("Can't peek() empty stack.");
     return this.first.val;
   }
 
